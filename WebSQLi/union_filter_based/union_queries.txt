@@ -1,0 +1,2 @@
+ SELECT name from customers WHERE email = '$data'
+ SELECT name, company FROM customers WHERE company = '$data'

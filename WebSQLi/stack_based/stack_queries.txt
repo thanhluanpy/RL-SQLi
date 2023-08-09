@@ -1,0 +1,4 @@
+ SELECT email FROM users WHERE email = '$data'
+ SELECT username, email FROM users WHERE username = '$data'
+ SELECT username, email, flag FROM users WHERE username =	'$data'
+ SELECT username, email, flag, password FROM users WHERE username = '$data'
