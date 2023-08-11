@@ -31,9 +31,9 @@
             echo "<br/>";
             while($row = mysqli_fetch_array($result))
             {
-                echo "<b>Name:</b> " . $row['name'] . " ";
-                echo "<b>Company: </b>" . $row['company'] . "<br />";
-                echo "<b>Surname: </b>" . $row['surname'] . "<br />";
+                echo "<b>username:</b> " . $row['username'] . " ";
+                echo "<b>email: </b>" . $row['email'] . "<br />";
+                echo "<b>{Flag}: </b>" . $row['flag'] . "<br />";
             }
             echo "Returned rows are: " . $result -> num_rows;
         }

@@ -15,12 +15,8 @@ from argparse import ArgumentParser, ArgumentDefaultsHelpFormatter
 
 class Agent():
     def __init__(self, url, verbose, deterministic, exploration, number_of_episodes, vuln_type):
-        print("Init Agent")
-        print("Agent url:" + url)
-        print("Agent verbose:" + str(verbose))        
-
+     
         self.env = env.SQLi_Environment(url, verbose)
-
         self.verbose = verbose
         self.deterministic = deterministic
         self.exploration = exploration
@@ -40,9 +36,7 @@ class Agent():
 
         self.max_columns = 3
         self.actions = generate.generate_actions(None, self.max_columns)
-        self.num_actions = len(self.actions)
-        # for item in self.actions:
-        # print(item)
+        self.num_actions = len(self.actions)     
         self.Q = {(): np.ones(self.num_actions)}
 
     def set_learning_options(self, learningrate=0.1,discount =0.9, max_step = 1000):
@@ -71,8 +65,7 @@ class Agent():
         and finally analyzes the response
         """
         self.steps = self.steps + 1
-        #print(f"Step {self.steps}:")
-
+        
         if self.verbose:
             print()            
             print(f"Step {self.steps}:")
@@ -112,19 +105,12 @@ class Agent():
         #3 = Stack based + input filter
         #4 = Union based + input filter
         #5 = random
-        """
-        print("Function run_episode vuln_type:" + str(vuln_type))
-        print("Function run_episode self.verbose:" + str(self.verbose))
-
+        """      
         _,_,self.terminated,debug_message = self.env.reset(vuln_type)
 
         if(self.verbose):
             print(f"{debug_message}\n\n\n")
-
-        print("Function run_episode self.terminated:" + str(self.terminated))
-        print("Function run_episode self.steps:" + str(self.steps))
-        print("Function run_episode self.max_step:" + str(self.max_step))
-
+      
         while (not self.terminated) and (self.steps < self.max_step):
             self.step()
 
@@ -174,7 +160,6 @@ class Agent():
         wrong1 = 0 # Wrong escape
         wrong2 = -1 # Should not be returned
 
-
         #The response is triggering some kind of SQLi on the website
         if(response==expl1 or response==expl2 or response == flag):
             self._update_state(action, response_interpretation = 1)
@@ -205,10 +190,7 @@ class Agent():
     def run(self):
         """
         Starts an episode
-        """
-        print("Function run")
-        print("Function run number_of_episodes:" + str(number_of_episodes))
-        print("Function run vuln_type:" + str(vuln_type))
+        """    
         a.reset(self.env)
         for i in range(number_of_episodes):
             a.run_episode(vuln_type)
@@ -226,34 +208,22 @@ if __name__ == "__main__":
     parser.add_argument("-e", "--exploration", help="Exploration rate", action="store", type=float,
     choices=[(x/10) for x in range(0, 11, 1)], default =0.2)
     parser.add_argument("-u", "--url", help="URL", action="store", type=str, default="http://localhost/")
-    parser.add_argument("-n", "--nepisodes", help="Number of episodes", action="store", type=int, default=10)
-    #args = vars(parser.parse_args())
+    parser.add_argument("-n", "--nepisodes", help="Number of episodes", action="store", type=int, default=10)    
     parser.add_argument("-t", "--type", help="Vulnerability type (1 = Stack based, 2 = Union based, 3 = Stack based + input filter, 4 = Union based + input filter, 5 = Random type)", 
                         action="store", type=int, choices =[(x) for x in range(0, 6, 1)], default=1)
-
-     #thuy test
-    # parser.add_argument("-t", "--type", help="Vulnerability type (1 = Stack based, 2 = Union based, 3 = Stack based + input filter, 4 = Union based + input filter, 5 = Random type)", 
-    #                      action="store", type=int, choices =[1, 2, 3, 4, 5], default=1)
-    #end thuy test
-
+  
     args = vars(parser.parse_args())
-
     verbose = args["verbose"]
     deterministic = args["deterministic"]
     exploration = args["exploration"]
     url = args["url"]
     number_of_episodes = args["nepisodes"]
-    vuln_type = args["type"]
-    #thuy them vao
-    #vuln_type = random.choice([1, 2, 3, 4, 5]);
-
-   
+    vuln_type = args["type"]  
     verbose= True
-    print("verbose: " + str(verbose))
-    print("vuln_type:" + str(vuln_type))
-    print("exploration:" + str(exploration))
 
-    a = Agent(url, verbose, deterministic, exploration, number_of_episodes, vuln_type)
-    #a = Agent(url, verbose, deterministic, exploration, number_of_episodes)
+    #vuln_type= 2
+  
+    print(vuln_type)
+    a = Agent(url, verbose, deterministic, exploration, number_of_episodes, vuln_type)    
 
     a.run()

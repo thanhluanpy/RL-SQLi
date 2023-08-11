@@ -1,3 +1,4 @@
- SELECT name from customers WHERE email = '$data'
- SELECT name, company FROM customers WHERE company = '$data'
- SELECT name, company, email FROM customers WHERE company = '$data'
+ SELECT Flag from customers WHERE email = '$data'
+ SELECT name, Flag from customers WHERE email = '$data'
+ SELECT name, company, Flag FROM customers WHERE company = '$data'
+ SELECT name, company, email, Flag FROM customers WHERE company = '$data'

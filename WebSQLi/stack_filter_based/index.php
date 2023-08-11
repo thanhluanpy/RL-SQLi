@@ -1,6 +1,7 @@
 <?php
     echo "Welcome";
     echo "<br />";
+
     //These are the defined authentication environment in the db service
     $host = 'localhost';
     $user = 'root';
@@ -10,7 +11,6 @@
     $mydatabase = 'mysqli';
     // check the mysql connection status
     $conn = new mysqli($host, $user, $pass, $mydatabase);
-
     echo '<form action="stack_filter_1.php" method="post">';
     echo 'Name: <input type="text" name="name">';
     echo 'E-mail: <input type="text" name="email">' ;
@@ -20,20 +20,20 @@
         $data = $_REQUEST['email'];
         echo "<br />";
         //Simple filter that detects illegal words and removes them from query
-        $illegal_word = " or ";
+        $illegal_word = " '1'='1'-- ";
         #choosing one of the words in the list at random to filter out
         if (strpos($data, $illegal_word) !== FALSE) {
             echo '<b>ILLEGAL WORD FOUND: <b/>';
             $data = str_replace($illegal_word, "", $data);
             echo '<b>NEW STRING' . $data . '<br />';
         }
-if ($result = $conn->query( " SELECT username, email FROM users WHERE username = '$data' ")) {#dynamic_query
+if ($result = $conn->query( " SELECT Flag FROM users WHERE email = '$data' ")) {#dynamic_query
             echo "<br/>";
             while($row = mysqli_fetch_array($result))
             {
-                echo "<b>Name:</b> " . $row['name'] . " ";
-                echo "<b>Company: </b>" . $row['company'] . "<br />";
-                echo "<b>Surname: </b>" . $row['surname'] . "<br />";
+                echo "<b>username:</b> " . $row['username'] . " ";
+                echo "<b>email: </b>" . $row['email'] . "<br />";
+                echo "<b>{Flag}: </b>" . $row['flag'] . "<br />";
             }
             echo "Returned rows are: " . $result -> num_rows;
         }

